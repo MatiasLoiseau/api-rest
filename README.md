@@ -1,8 +1,9 @@
 # api-rest
 Api Rest con Django
 
-# Installationn:
+## Installation:
 
-1- clone this repo
-2- chmod a+x runserver.sh
-3- ./runserver.sh
+* ```git clonehttps://github.com/MatiasLoiseau/api-rest.git```
+* ```cd  api-rest```
+* ```chmod a+x runserver.sh```
+* ```./runserver.sh```
