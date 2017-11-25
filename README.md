@@ -24,7 +24,7 @@
 -El set de pruebas incluye comandos utilizados con httpie
 
 
-##Test
+## Test
 
 -Para correr los test ejecutar:
 ```python manage.py test```
