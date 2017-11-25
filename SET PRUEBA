@@ -1,0 +1,29 @@
+#creacion de cuenta
+ http --json http://127.0.0.1:8000/controlgastos/cuentas/ nombre=as4400  <- va a generar una cuenta con id 1
+
+#creacion de usuarios
+http --json http://127.0.0.1:8000/controlgastos/usuarios/ password=1 user=pepe  cuenta=1 email=pepe@hotmail.com <- va a generar un usuario con id 1 (autoincremental)
+http --json http://127.0.0.1:8000/controlgastos/usuarios/ password=123 user=vicky cuenta=1 email=vicky@carlincalvo.net  <- va a generar un usuario con id 2 (autoincremental)
+
+#consultar el listado completo de usuarios
+http --json http://127.0.0.1:8000/controlgastos/usuarios/
+#consultar el listado completo de las cuentas
+http --json http://127.0.0.1:8000/controlgastos/cuentas/
+
+#consultar un usuario por su id
+http --json http://127.0.0.1:8000/controlgastos/usuarios/1/
+#consultar una cuenta por su id
+http --json http://127.0.0.1:8000/controlgastos/cuentas/1/
+
+#consultar todos los usuarios de la cuenta 1
+http --json http://127.0.0.1:8000/controlgastos/usuarios/cuenta/1/
+
+#modificar un usuario
+http PUT  http://127.0.0.1:8000/controlgastos/usuarios/1/ user="lanabanana"
+#modificar una cuenta
+http PUT  http://127.0.0.1:8000/controlgastos/cuentas/1/ nombre="cuentita"
+
+#borrar un usuario por su id
+http  DELETE  http://127.0.0.1:8000/controlgastos/usuarios/1/
+#borrar una cuenta por su id
+http  DELETE  http://127.0.0.1:8000/controlgastos/cuentas/1/
