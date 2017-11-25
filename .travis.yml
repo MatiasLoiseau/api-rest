@@ -1,0 +1,16 @@
+language: python
+
+python:
+  - "2.7"
+
+#services:
+#  - mysql
+
+env:
+  - DJANGO=1.11.7
+
+install:
+  - pip install -q django==$DJANGO
+
+script:
+  - python manage.py test
