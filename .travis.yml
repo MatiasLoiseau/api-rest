@@ -11,6 +11,7 @@ env:
 
 install:
   - pip install -q django==$DJANGO
+  - pip install -q djangorestframework
 
 script:
   - python manage.py test
