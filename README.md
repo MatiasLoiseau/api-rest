@@ -4,10 +4,10 @@
 
 ## Instalacion:
 
-```git clone https://github.com/MatiasLoiseau/api-rest.git```
-```cd api-rest```
-```chmod a+x runserver.sh```
-```./runserver.sh```
+* ```git clone https://github.com/MatiasLoiseau/api-rest.git```
+* ```cd api-rest```
+* ```chmod a+x runserver.sh```
+* ```./runserver.sh```
 
 
 ## Virtualenv
