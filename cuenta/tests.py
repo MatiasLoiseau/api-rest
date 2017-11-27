@@ -1,13 +1,4 @@
-import json
-from django.test import TestCase
-from models import Cuenta
-#from rest_framework.test import APIRequestFactory
 from rest_framework.test import APITestCase
-from rest_framework.test import APIClient
-
-# Create your tests here.
-#factory = APIRequestFactory()
-#request = factory.post('/controlgastos/cuentas/', {'nombre': 'nombrecualquiera'})
 
 
 class CuentaTestCase(APITestCase):
