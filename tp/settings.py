@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'cuenta',
     'usuario',
     'categoria',
+    'movimiento',
 ]
 
 MIDDLEWARE = [
