@@ -1,4 +1,8 @@
 from rest_framework.test import APITestCase
+from cuenta.serializer import CuentaSerializer
+from categoria.serializer import CategoriaSerializer
+from usuario.serializer import UsuarioSerializer
+from movimiento.serializer import MovimientoSerializer
 
 
 class MovimientoTestCase(APITestCase):
@@ -6,22 +10,20 @@ class MovimientoTestCase(APITestCase):
 
     def test_post_movimiento(self):
     	#Creo una cuenta para la categoria
-        cuenta_data = {
-            "nombre": "testnombre",
-        }
-        self.client.post('/controlgastos/cuentas/', cuenta_data, format='json')
-        categoria_data = {
-            "nombre": "testnombre",
-            "cuenta": "1",
-        }
-        self.client.post('/controlgastos/categorias/', categoria_data, format='json')
-        usuario_data = {
-            "user": "testuser",
-            "password": "testpassword",
-            "email": "test@email.com",
-            "cuenta": "1",
-        }
-        self.client.post('/controlgastos/usuarios/', usuario_data, format='json')
+        cuenta_data = {u'nombre': u'testnombre'}
+        serializerCuenta = CuentaSerializer(data=cuenta_data)
+        if serializerCuenta.is_valid():
+            serializerCuenta.save()
+        #Creo una categoria
+        categoria_data = {u'nombre': u'testnombre', u'cuenta': u'1'}
+        serializerCategoria = CategoriaSerializer(data=categoria_data)
+        if serializerCategoria.is_valid():
+            serializerCategoria.save()
+        #Creo un usuario
+        usuario_data = {u'password': u'testpassword', u'user': u'testuser', u'cuenta': u'1', u'email': u'test@email.com'}
+        serializerUsuario = UsuarioSerializer(data=usuario_data)
+        if serializerUsuario.is_valid():
+            serializerUsuario.save()
         movimiento_data = {
         	"monto": "20000",
             "categoria": "1",
@@ -33,22 +35,20 @@ class MovimientoTestCase(APITestCase):
        
     def test_delete_movimiento(self):
     	#Creo una cuenta para la categoria
-        cuenta_data = {
-            "nombre": "testnombre",
-        }
-        self.client.post('/controlgastos/cuentas/', cuenta_data, format='json')
-        categoria_data = {
-            "nombre": "testnombre",
-            "cuenta": "1",
-        }
-        self.client.post('/controlgastos/categorias/', categoria_data, format='json')
-        usuario_data = {
-            "user": "testuser",
-            "password": "testpassword",
-            "email": "test@email.com",
-            "cuenta": "1",
-        }
-        self.client.post('/controlgastos/usuarios/', usuario_data, format='json')
+        cuenta_data = {u'nombre': u'testnombre'}
+        serializerCuenta = CuentaSerializer(data=cuenta_data)
+        if serializerCuenta.is_valid():
+            serializerCuenta.save()
+        #Creo una categoria
+        categoria_data = {u'nombre': u'testnombre', u'cuenta': u'1'}
+        serializerCategoria = CategoriaSerializer(data=categoria_data)
+        if serializerCategoria.is_valid():
+            serializerCategoria.save()
+        #Creo un usuario
+        usuario_data = {u'password': u'testpassword', u'user': u'testuser', u'cuenta': u'1', u'email': u'test@email.com'}
+        serializerUsuario = UsuarioSerializer(data=usuario_data)
+        if serializerUsuario.is_valid():
+            serializerUsuario.save()
         movimiento_data = {
         	"monto": "20000",
             "categoria": "1",
@@ -60,33 +60,27 @@ class MovimientoTestCase(APITestCase):
         
     def test_put_movimiento(self):
     	#Creo una cuenta para la categoria
-        cuenta_data = {
-            "nombre": "testnombre",
-        }
-        self.client.post('/controlgastos/cuentas/', cuenta_data, format='json')
-        categoria_data = {
-            "nombre": "testnombre",
-            "cuenta": "1",
-        }
-        self.client.post('/controlgastos/categorias/', categoria_data, format='json')
-        usuario_data = {
-            "user": "testuser",
-            "password": "testpassword",
-            "email": "test@email.com",
-            "cuenta": "1",
-        }
-        self.client.post('/controlgastos/usuarios/', usuario_data, format='json')
-        movimiento_data = {
-        	"monto": "20000",
-            "categoria": "1",
-            "user": "1",
-        }
+        cuenta_data = {u'nombre': u'testnombre'}
+        serializerCuenta = CuentaSerializer(data=cuenta_data)
+        if serializerCuenta.is_valid():
+            serializerCuenta.save()
+        categoria_data = {u'nombre': u'testnombre', u'cuenta': u'1'}
+        serializerCategoria = CategoriaSerializer(data=categoria_data)
+        if serializerCategoria.is_valid():
+            serializerCategoria.save()
+        usuario_data = {u'password': u'testpassword', u'user': u'testuser', u'cuenta': u'1', u'email': u'test@email.com'}
+        serializerUsuario = UsuarioSerializer(data=usuario_data)
+        if serializerUsuario.is_valid():
+            serializerUsuario.save()
+        movimiento_data = {u'monto': u'20000', u'categoria': u'1', u'user': u'1'}
+        serializerMovimiento = MovimientoSerializer(data=movimiento_data)
+        if serializerMovimiento.is_valid():
+            serializerMovimiento.save()
         movimiento_data_modificada = {
         	"monto": "999999",
             "categoria": "1",
             "user": "1",
         }
-        response_post = self.client.post('/controlgastos/movimientos/', movimiento_data, format='json')
         response_put = self.client.put('/controlgastos/movimientos/1/', movimiento_data_modificada, format='json')
         self.assertEqual(200, response_put.status_code)
 
