@@ -18,7 +18,7 @@ class CuentaTestCase(APITestCase):
         if serializerCuenta.is_valid():
             serializerCuenta.save()
         responseDelete = self.client.delete('/controlgastos/cuentas/1/', format='json')
-        self.assertEqual(410, responseDelete.status_code)
+        self.assertEqual(200, responseDelete.status_code)
         
     def test_put_cuenta(self):
         cuenta_data = {u'nombre': u'testnombre'}

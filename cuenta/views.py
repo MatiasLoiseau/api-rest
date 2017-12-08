@@ -50,4 +50,4 @@ def cuenta_modify(request, pk):
 
     elif request.method == 'DELETE':
         cuenta.delete()
-        return HttpResponse(status=410)
+        return HttpResponse(status=200)

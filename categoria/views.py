@@ -59,4 +59,4 @@ def categoria_modify(request, pk):
 
     elif request.method == 'DELETE':
         categoria.delete()
-        return HttpResponse(status=410)
+        return HttpResponse(status=200)

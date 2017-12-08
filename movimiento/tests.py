@@ -56,7 +56,7 @@ class MovimientoTestCase(APITestCase):
         }
         response_post = self.client.post('/controlgastos/movimientos/', movimiento_data, format='json')
         response_delete = self.client.delete('/controlgastos/movimientos/1/', format='json')
-        self.assertEqual(410, response_delete.status_code)
+        self.assertEqual(200, response_delete.status_code)
         
     def test_put_movimiento(self):
     	#Creo una cuenta para la categoria

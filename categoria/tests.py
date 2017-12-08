@@ -28,7 +28,7 @@ class CategoriaTestCase(APITestCase):
         if serializerCategoria.is_valid():
             serializerCategoria.save()
         responseDelete = self.client.delete('/controlgastos/categorias/1/', format='json')
-        self.assertEqual(410, responseDelete.status_code)
+        self.assertEqual(200, responseDelete.status_code)
         
     def test_put_categoria(self):
     	cuenta_data = {u'nombre': u'testnombre'}
