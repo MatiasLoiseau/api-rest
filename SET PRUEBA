@@ -16,7 +16,7 @@ http --json http://127.0.0.1:8000/controlgastos/usuarios/1/
 http --json http://127.0.0.1:8000/controlgastos/cuentas/1/
 
 #consultar todos los usuarios de la cuenta 1
-http --json http://127.0.0.1:8000/controlgastos/usuarios/cuenta/1/
+http --json http://127.0.0.1:8000/controlgastos/usuarios/1/cuenta/
 
 #modificar un usuario
 http PUT  http://127.0.0.1:8000/controlgastos/usuarios/1/ user="lanabanana"
