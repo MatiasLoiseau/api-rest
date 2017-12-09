@@ -6,4 +6,4 @@ from movimiento.models import Movimiento
 class MovimientoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movimiento
-        fields = ('id', 'categoria','user','monto')
+        fields = ('id','fecha','user','monto','categoria','descripcion')
