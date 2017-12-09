@@ -1,0 +1,20 @@
+[
+{ "model": "cuenta.cuenta",
+  "pk": 1,
+  "fields": {
+    "nombre": "acc1"
+  }
+},
+{ "model": "cuenta.cuenta",
+  "pk": 2,
+  "fields": {
+    "nombre": "acc2"
+  }
+},
+{ "model": "cuenta.cuenta",
+  "pk": 3,
+  "fields": {
+    "nombre": "acc3"
+  }
+}
+]

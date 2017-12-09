@@ -16,7 +16,7 @@ http --json http://127.0.0.1:8000/controlgastos/usuarios/1/
 http --json http://127.0.0.1:8000/controlgastos/cuentas/1/
 
 #consultar todos los usuarios de la cuenta 1
-http --json http://127.0.0.1:8000/controlgastos/usuarios/1/cuenta/
+http --json http://127.0.0.1:8000/controlgastos/cuentas/1/usuarios/
 
 #modificar un usuario
 http PUT  http://127.0.0.1:8000/controlgastos/usuarios/1/ user="lanabanana"
@@ -29,7 +29,7 @@ http  DELETE  http://127.0.0.1:8000/controlgastos/usuarios/1/
 http  DELETE  http://127.0.0.1:8000/controlgastos/cuentas/1/
 
 #crear categoria
-http POST --json http://127.0.0.1:8000/controlgastos/categorias/ nombre=cat1 cuenta=1
+http  --json POST http://127.0.0.1:8000/controlgastos/categorias/ nombre=cat1 cuenta=1
 
 #crear movimiento
 http --json POST http://127.0.0.1:8000/controlgastos/movimientos/   user=1 monto=25 categoria=1 descripcion="compra-venta"  (se crea con la fecha del momento de creacion)

@@ -1,0 +1,1 @@
+[{"model": "movimiento.movimiento", "pk": 1, "fields": {"user": 1, "monto": "25", "categoria": 1, "descripcion": "compra-venta"}}]

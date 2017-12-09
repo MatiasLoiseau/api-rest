@@ -1,0 +1,1 @@
+[{"model": "usuario.usuario", "pk": 1, "fields": {"user": "pepe", "password": "1", "email": "pepe@hotmail.com", "cuenta": 1}}, {"model": "usuario.usuario", "pk": 2, "fields": {"user": "vicky", "password": "123", "email": "vicky@carlincalvo.net", "cuenta": 1}}]
