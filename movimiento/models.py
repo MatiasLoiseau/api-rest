@@ -5,6 +5,8 @@ from usuario.models import Usuario
 
 
 class Movimiento(models.Model):
+    fecha = time.strftime("%c")
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     monto = models.CharField(max_length=200)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    user = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    descripcion = models.CharField(max_length=200)
