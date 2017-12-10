@@ -140,7 +140,22 @@ Algunas de las posibles respuestas:
 ##### Parámetros
 * id -> solo en caso de querer ver los detalles de una cuenta específica, en caso contrario no se deberá pasar ningún parámetro
 ##### Request
+Listar todas las cuentas
+
+	http GET http://{$PATH}/controlgastos/cuentas/
+	
+Ver los detalles de una cuenta
+
 	http GET http://{$PATH}/controlgastos/cuentas/{$id}
+	
+Listar todos los usuarios de una cuenta
+
+	http GET http://{$PATH}/controlgastos/cuentas/{$id (cuenta)}/usuarios/
+	
+Listar todas las categorías de una cuenta
+
+	http GET http://{$PATH}/controlgastos/cuentas/{$id (cuenta)}/categorias/
+
 ##### Responses
 Algunas de las posibles respuestas:
 * 200: En caso de que la consulta haya sido realizada con éxito
@@ -153,7 +168,7 @@ Ejemplo:
 		HTTP/1.1 200 OK
 		Content-Length: 39
 		Content-Type: application/json
-		Date: Sat, 09 Dec 2017 22:41:16 GMT
+		Date: Sat, 06 Dec 2017 22:41:16 GMT
 		Server: WSGIServer/0.2 CPython/3.5.3
 		X-Frame-Options: SAMEORIGIN
 
@@ -182,7 +197,7 @@ Ejemplo:
 		HTTP/1.1 200 OK
 		Content-Length: 45
 		Content-Type: application/json
-		Date: Sat, 09 Dec 2017 23:01:18 GMT
+		Date: Sat, 06 Dec 2017 23:01:18 GMT
 		Server: WSGIServer/0.2 CPython/3.5.3
 		X-Frame-Options: SAMEORIGIN
 
@@ -308,6 +323,96 @@ Algunas de las posibles respuestas:
 * 500: Error en el servidor
 
 ***
+## Categorías
+
+### Atributos
+##### * id:
+	Integer. Valor autoincremental que se generará automáticamente.
+##### * nombre:
+	String. Denominación de la categoría.
+##### * cuenta:
+	Cuenta a la cual corresponde la categoría. Clave foránea (id) de una cuenta previamente generada.
+	
+#### Métodos
+#### Dar de alta una categoría
+##### Parámetros
+* id
+* nombre
+* cuenta
+##### Request
+	 http POST http://localhost:8000/controlgastos/categorias/ nombre=cat1 cuenta=2
+##### Responses
+Algunas de las posibles respuestas:
+* 201: La cuenta ha sido generada correctamente
+* 400: Bad Request. Por ejemplo, si la cuenta elegida no ha sido creada
+* 500: Error en el servidor
+
+#### Listar las categoría
+##### Parámetros
+* id -> solo en caso de querer ver los detalles de una cuenta específica, en caso contrario no se deberá pasar ningún parámetro
+##### Request
+	http GET http://{$PATH}/controlgastos/categorias/{$id}
+##### Responses
+Algunas de las posibles respuestas:
+* 200: En caso de que la consulta haya sido realizada con éxito
+* 404: En caso de que no haya sido encontrado el objeto
+* 500: Error en el servidor
+
+Si la respuesta es exitosa se devolverá el recurso en formato JSON
+Ejemplo:
+
+		HTTP/1.1 200 OK
+		Content-Length: 40
+		Content-Type: application/json
+		Date: Sun, 10 Dec 2017 01:52:40 GMT
+		Server: WSGIServer/0.2 CPython/3.5.3
+		X-Frame-Options: SAMEORIGIN
+
+		{
+		    "cuenta": 2, 
+		    "id": 1, 
+		    "nombre": "cat1"
+		}
+		
+#### Modificar una categoria
+##### Parámetros
+* id -> Primary Key de la Categoria
+* Atributos que se desee modificar. [(Ver Atributos de la Categoria)](#categorias)
+##### Request
+	http PUT http://{$PATH}/controlgastos/cateogorias/{$id}/  nombre="nuevo_nombre_de_categoria"
+##### Responses
+Algunas de las posibles respuestas:
+* 200: En caso de que la consulta haya sido realizada con éxito
+* 404: En caso de que no haya sido encontrado el objeto
+* 500: Error en el servidor
+
+En caso de que la respuesta sea exitosa, también será devuelto el recurso modificado en formato JSON
+Ejemplo:
+
+		HTTP/1.1 200 OK
+		Content-Length: 51
+		Content-Type: application/json
+		Date: Sun, 10 Dec 2017 02:15:45 GMT
+		Server: WSGIServer/0.2 CPython/3.5.3
+		X-Frame-Options: SAMEORIGIN
+
+		{
+		    "cuenta": 2, 
+		    "id": 1, 
+		    "nombre": "cate_modificada"
+		}
+
+#### Borrar una categoria
+##### Parámetros
+* id -> Primary Key de la Categoría
+##### Request
+	http DELETE http://{$PATH}/controlgastos/categorias/{$id}/  
+##### Responses
+Algunas de las posibles respuestas:
+* 200: En caso de que la consulta haya sido realizada con éxito
+* 404: En caso de que no haya sido encontrado el objeto
+* 500: Error en el servidor
+***
 
 ## Movimientos
 ### Atibutos
@@ -326,22 +431,31 @@ Algunas de las posibles respuestas:
 	
 ### Métodos
 #### Dar de alta un movimiento
-
 ##### Parámetros
+* user
+* monto
+* categoría
+* descripción (opcional)
 ##### Request
-	  http POST http://localhost/controlgastos/usuarios/ user="user_ejemplo_1" email=usrejemplo@ejemplo.com cuenta=<id de cuenta> password="ejemplo"
-
+	  http POST http://localhost/controlgastos/movimientos/ user="1" monto="10" categoria=1 descripcion="alquileres"
 ##### Responses
 Algunas de las posibles respuestas:
 * 201: La cuenta ha sido generada correctamente
 * 400: Bad Request. Por ejemplo, en caso de que no se ha encontrado el recurso cuenta al cual se quiere asociar
 * 500: Error en el servidor
 
-#### Listar los usuarios
+#### Listar los movimientos
 ##### Parámetros
-* id -> solo en caso de querer ver los detalles de un usuario específico, en caso contrario no se deberá pasar ningún parámetro
+* id -> solo en caso de querer ver los detalles de un movimiento específico, en caso contrario no se deberá pasar ningún parámetro
 ##### Request
-	http GET http://{$PATH}/controlgastos/usuarios/{$id}
+Listar todos los movimientos
+
+	http GET http://{$PATH}/controlgastos/movimientos/
+	
+Ver detalles de un movimiento
+
+	http GET http://{$PATH}/controlgastos/movimientos/{$id}
+	
 ##### Responses
 Algunas de las posibles respuestas:
 * 200: En caso de que la consulta haya sido realizada con éxito
@@ -351,27 +465,30 @@ Algunas de las posibles respuestas:
 Si la respuesta es exitosa se devolverá el recurso en formato JSON
 Ejemplo:
 
-		HTTP/1.1 201 Created
-		Content-Length: 101
+		HTTP/1.1 200 OK
+		Content-Length: 130
 		Content-Type: application/json
-		Date: Sun, 10 Dec 2017 00:37:11 GMT
+		Date: Sun, 10 Dec 2017 02:25:17 GMT
 		Server: WSGIServer/0.2 CPython/3.5.3
 		X-Frame-Options: SAMEORIGIN
 
-		{
-		    "cuenta": 2, 
-		    "email": "ejemplo@ejemplo.com", 
-		    "id": 3, 
-		    "password": "ejemplo", 
-		    "user": "ejemplo_user"
-		}
+		[
+		    {
+			"categoria": 1, 
+			"descripcion": "operacion compra-venta", 
+			"fecha": "2017-12-10T02:13:05.896", 
+			"id": 1, 
+			"monto": "10", 
+			"user": 3
+		    }
+		]
 
-#### Modificar un usuario
+#### Modificar un movimiento
 ##### Parámetros
-* id -> Primary Key del Usuario
-* Atributos que se desee modificar. [(Ver Atributos del Usuario)](#usuarios)
+* id -> Primary Key del Movimiento
+* Atributos que se desee modificar. [(Ver Atributos del Movimiento)](#movimientos)
 ##### Request
-	http PUT http://{$PATH}/controlgastos/usuarios/{$id}/  atributo="nuevo_valor"
+	http PUT http://{$PATH}/controlgastos/movimientos/{$id}/  atributo="nuevo_valor"
 ##### Responses
 Algunas de las posibles respuestas:
 * 200: En caso de que la consulta haya sido realizada con éxito
@@ -382,25 +499,26 @@ En caso de que la respuesta sea exitosa, también será devuelto el recurso modi
 Ejemplo:
 
 		HTTP/1.1 200 OK
-		Content-Length: 112
+		Content-Length: 133
 		Content-Type: application/json
-		Date: Sun, 10 Dec 2017 00:43:59 GMT
+		Date: Sun, 10 Dec 2017 02:26:12 GMT
 		Server: WSGIServer/0.2 CPython/3.5.3
 		X-Frame-Options: SAMEORIGIN
 
 		{
-		    "cuenta": 2, 
-		    "email": "ejemplo@ejemplo.com", 
-		    "id": 3, 
-		    "password": "ejemplo", 
-		    "user": "ejemplo_user_modificado"
+		    "categoria": 1, 
+		    "descripcion": "operacion compra-venta", 
+		    "fecha": "2017-12-10T02:13:05.896", 
+		    "id": 1, 
+		    "monto": "1000000", 
+		    "user": 3
 		}
 
-#### Borrar un usuario
+#### Borrar un movimiento
 ##### Parámetros
-* id -> Primary Key del Usuario
+* id -> Primary Key del Movimiento
 ##### Request
-	http DELETE http://{$PATH}/controlgastos/usuarios/{$id}/  
+	http DELETE http://{$PATH}/controlgastos/movimientos/{$id}/  
 ##### Responses
 Algunas de las posibles respuestas:
 * 200: En caso de que la consulta haya sido realizada con éxito
@@ -408,28 +526,25 @@ Algunas de las posibles respuestas:
 * 500: Error en el servidor
 
 ***
-## Categorías
-
-### Atributos
-##### * id:
-	Integer. Valor autoincremental que se generará automáticamente.
-##### * nombre:
-	String. Denominación de la categoría.
-##### * cuenta:
-	Cuenta a la cual corresponde la categoría. Clave foránea (id) de una cuenta previamente generada.
-	
-#### Features
-* Dar de alta una categoría
-* Listar todas las categorías
-* Listar una categoría específica
-* Modificar o borrar un categoría
-
-***
 
 # Test
 
 ### Fixtures
+Han sido utilizados para completar automáticamente datos y que nos mismos no contengan errores que no permitan que el test continúe.
+##### Generación
+	python manage.py dumpdata > path/to/app/fixtures/data.json
+##### Carga
+	from django.core.management import call_command
+	call_command('loaddata', 'data.json', app_label='aplicacion')
 
 ### Ejecución de los test
 Para correr los test los pasos son los siguientes:
-```python manage.py test```
+En caso de que se quiera correr algun cambio se podrá generar la migración.
+
+		python manage.py makemigrations
+		python manage.py migrate
+		python manage.py test
+		
+Para testear solo un recurso en particular:
+
+		python manage.py test <nombre recurso>.tests
