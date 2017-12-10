@@ -3,6 +3,5 @@ from categoria import views
 
 urlpatterns = [
     url(r'^$', views.categoria_list),
-    url(r'^categorias/(?P<pk>[0-9]+)/$', views.categoria_get),
     url(r'^(?P<pk>[0-9]+)/$', views.categoria_modify),
 ]

@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^controlgastos/cuentas/', include('cuenta.urls')),
     url(r'^controlgastos/categorias/', include('categoria.urls')),
     url(r'^controlgastos/movimientos/', include('movimiento.urls')),
-    url(r'^admin/', admin.site.urls)
+    url(r'^admin/', admin.site.urls),
 ]

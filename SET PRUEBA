@@ -31,6 +31,9 @@ http  DELETE  http://127.0.0.1:8000/controlgastos/cuentas/1/
 #crear categoria
 http  --json POST http://127.0.0.1:8000/controlgastos/categorias/ nombre=cat1 cuenta=1
 
+#consultar todas las categorias de la cuenta 1
+http --json http://127.0.0.1:8000/controlgastos/cuentas/1/usuarios/
+
 #crear movimiento
 http --json POST http://127.0.0.1:8000/controlgastos/movimientos/   user=1 monto=25 categoria=1 descripcion="compra-venta"  (se crea con la fecha del momento de creacion)
 
