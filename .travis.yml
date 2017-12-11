@@ -1,7 +1,7 @@
 language: python
 
 python:
-  - "2.7"
+  - "3.5"
 
 #services:
 #  - mysql
@@ -10,8 +10,8 @@ env:
   - DJANGO=1.11.7
 
 install:
-  - pip install -q django==$DJANGO
-  - pip install -q djangorestframework
+  - pip3 install -q django==$DJANGO
+  - pip3 install -q djangorestframework
 
 script:
   - python3 manage.py test
