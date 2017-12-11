@@ -37,7 +37,7 @@ Para ver el apartado completo sobre los recursos mencionados haga click [aquí](
 # Instalación:
 ### Requisitos básicos
 Deberá contar con los siguientes paquetes instalados:
-* Python 22.7
+* Python 3.5
 * Django 1.11
 * Django Rest Framework 3.7.3
 
@@ -64,8 +64,8 @@ Puede proceder a generar su propio entorno virtual, siguiendo estos pasos:
 
 		virtualenv env
 		source env/bin/activate
-		pip install django
-		pip install djangorestframework
+		pip3 install django
+		pip3 install djangorestframework
 
 ___
 ### HTTPIE
@@ -532,7 +532,7 @@ Algunas de las posibles respuestas:
 ### Fixtures
 Han sido utilizados para completar automáticamente datos y que nos mismos no contengan errores que no permitan que el test continúe.
 ##### Generación
-	python manage.py dumpdata > path/to/app/fixtures/data.json
+	python3 manage.py dumpdata > path/to/app/fixtures/data.json
 ##### Carga
 	from django.core.management import call_command
 	call_command('loaddata', 'data.json', app_label='aplicacion')
@@ -541,10 +541,10 @@ Han sido utilizados para completar automáticamente datos y que nos mismos no co
 Para correr los test los pasos son los siguientes:
 En caso de que se quiera correr algun cambio se podrá generar la migración.
 
-		python manage.py makemigrations
-		python manage.py migrate
-		python manage.py test
+		python3 manage.py makemigrations
+		python3 manage.py migrate
+		python3 manage.py test
 		
 Para testear solo un recurso en particular:
 
-		python manage.py test <nombre recurso>.tests
+		python3 manage.py test <nombre recurso>.tests
