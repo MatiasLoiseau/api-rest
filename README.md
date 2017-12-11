@@ -37,7 +37,7 @@ Para ver el apartado completo sobre los recursos mencionados haga click [aquí](
 # Instalación:
 ### Requisitos básicos
 Deberá contar con los siguientes paquetes instalados:
-* Python 2.7
+* Python 22.7
 * Django 1.11
 * Django Rest Framework 3.7.3
 
@@ -133,7 +133,7 @@ ___
 ##### Responses
 Algunas de las posibles respuestas:
 * 201: La cuenta ha sido generada correctamente
-* 400: Bad Request. Por ejemplo, si no se han pasado los parámetros tal como lo muestra el ejemplo
+* 400: En caso de que el request este mal escrito, o que falte el campo de nombre
 * 500: Error en el servidor
 
 #### Listar las cuentas
@@ -249,7 +249,7 @@ ___
 ##### Responses
 Algunas de las posibles respuestas:
 * 201: La cuenta ha sido generada correctamente
-* 400: Bad Request. Por ejemplo, en caso de que no se ha encontrado el recurso cuenta al cual se quiere asociar
+* 400: Puede ser Bad Request si: 1° Tipo de dato incorrecto, 2° Falta un campo, 3° No encuentra el ID de la cuenta
 * 500: Error en el servidor
 
 #### Listar los usuarios
@@ -344,7 +344,7 @@ Algunas de las posibles respuestas:
 ##### Responses
 Algunas de las posibles respuestas:
 * 201: La cuenta ha sido generada correctamente
-* 400: Bad Request. Por ejemplo, si la cuenta elegida no ha sido creada
+* 400: Puede ser Bad Request si: 1° Tipo de dato incorrecto, 2° Falta un campo, 3° No encuentra el ID de la cuenta
 * 500: Error en el servidor
 
 #### Listar las categoría
@@ -441,7 +441,7 @@ Algunas de las posibles respuestas:
 ##### Responses
 Algunas de las posibles respuestas:
 * 201: La cuenta ha sido generada correctamente
-* 400: Bad Request. Por ejemplo, en caso de que no se ha encontrado el recurso cuenta al cual se quiere asociar
+* 400: Puede ser Bad Request si: 1° Tipo de dato incorrecto, 2° Falta un campo, 3° No encuentra el ID del usuario o categoria
 * 500: Error en el servidor
 
 #### Listar los movimientos

@@ -16,5 +16,11 @@
   "fields": {
     "nombre": "acc3"
   }
+},
+{ "model": "cuenta.cuenta",
+  "pk": 4,
+  "fields": {
+    "nombre": "acc4"
+  }
 }
 ]

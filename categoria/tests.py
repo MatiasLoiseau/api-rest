@@ -1,6 +1,4 @@
 from rest_framework.test import APITestCase
-from cuenta.serializer import CuentaSerializer
-from categoria.serializer import CategoriaSerializer
 from django.core.management import call_command
 
 
@@ -25,3 +23,21 @@ class CategoriaTestCase(APITestCase):
         categoria_data_modificada = {u'nombre': u'testnombremodificado', u'cuenta': u'1'}
         responsePut = self.client.put('/controlgastos/categorias/1/', categoria_data_modificada, format='json')
         self.assertEqual(200, responsePut.status_code)
+
+    def test_bad_request_incorrect_type_categoria(self):
+        call_command('loaddata', 'data_acc.json', app_label='categoria')
+        categoria_data_wrong = {u'nombre': u'testnombre', u'cuenta': u'SoyUnError'}
+        response_post_wrong = self.client.post('/controlgastos/categorias/', categoria_data_wrong, format='json')
+        self.assertEqual(400, response_post_wrong.status_code)
+
+    def test_bad_request_field_required_categoria(self):
+        call_command('loaddata', 'data_acc.json', app_label='usuario')
+        categoria_data_wrong = {u'cuenta': u'1'}
+        response_post_wrong = self.client.post('/controlgastos/categorias/', categoria_data_wrong, format='json')
+        self.assertEqual(400, response_post_wrong.status_code)
+
+    def test_bad_request_no_encuentra_recurso_categoria(self):
+        call_command('loaddata', 'data_acc.json', app_label='categoria')
+        categoria_data_wrong = {u'nombre': u'testnombre', u'cuenta': u'999'}
+        response_post_wrong = self.client.post('/controlgastos/categorias/', categoria_data_wrong, format='json')
+        self.assertEqual(400, response_post_wrong.status_code)
