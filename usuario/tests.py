@@ -27,6 +27,7 @@ class UsuarioTestCase(APITestCase):
         
     #Testeo que indique Bad Request en caso de que se quiera crear un usuario pasando parametros de tipo incorrecto
     def test_bad_request_incorrect_type_usuario(self):
+        call_command('loaddata', 'data_acc.json', app_label='usuario') #Cargo las cuentas ya creadas
         usuario_data_wrong = {u'password': u'testpassword', u'user': u'testuser', u'cuenta': u'SoyUnError', u'email': u'test@email.com'}
         response_post_wrong = self.client.post('/controlgastos/usuarios/', usuario_data_wrong, format='json')
         self.assertEqual(400, response_post_wrong.status_code)
