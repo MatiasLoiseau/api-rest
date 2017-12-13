@@ -17,7 +17,6 @@ install:
   - pip3 install drfdocs
 
 script:
-  - cd tp
   - python3 manage.py test 
   - coverage run --source=python3 manage.py test
   
