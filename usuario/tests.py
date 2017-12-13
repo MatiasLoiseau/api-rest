@@ -35,7 +35,9 @@ class UsuarioTestCase(APITestCase):
         response_post_wrong = self.client.post('/controlgastos/usuarios/', usuario_data_wrong, format='json')
         self.assertEqual(400, response_post_wrong.status_code)
         
+        
     '''Consulta de usuario'''
+    
     #Testeo la consulta de los usuarios
     def test_get_usuario(self):
         call_command('loaddata', 'data_acc.json', app_label='usuario') #Cargo las cuentas ya creadas
@@ -55,9 +57,11 @@ class UsuarioTestCase(APITestCase):
         call_command('loaddata', 'data_acc.json', app_label='usuario') #Cargo las cuentas ya creadas
         call_command('loaddata', 'data_usr.json', app_label='usuario') #Cargo un usuario ya creado
         response = self.client.get('/controlgastos/cuentas/1/usuarios/')
-        self.assertEqual(200, response.status_code)      
+        self.assertEqual(200, response.status_code)    
+        
         
     '''Eliminacion de usuario'''
+    
     #Testeo borrado de un usuario
     def test_delete_usuario(self):
         call_command('loaddata', 'data_acc.json', app_label='usuario') #Cargo las cuentas ya creadas
@@ -70,7 +74,9 @@ class UsuarioTestCase(APITestCase):
         response_delete = self.client.delete('/controlgastos/usuarios/6/', format='json')
         self.assertEqual(404, response_delete.status_code)
         
+        
     '''Modificacion de usuario'''
+    
     #Testeo modificación de un usuario
     def test_put_usuario(self):
         call_command('loaddata', 'data_acc.json', app_label='usuario') #Cargo las cuentas ya creadas
