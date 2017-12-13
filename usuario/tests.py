@@ -45,11 +45,6 @@ class UsuarioTestCase(APITestCase):
         response = self.client.get('/controlgastos/usuarios/')
         self.assertEqual(200, response.status_code)
         
-    #Testeo consulta de usuario inexistente
-    def test_not_found_get_usuario(self):
-        response = self.client.get('/controlgastos/usuarios/3/')
-        self.assertEqual(404, response.status_code)
-        
     #Testeo la consulta de un usuario especifico
     def test_get_usuario_bypk(self):
         call_command('loaddata', 'data_acc.json', app_label='usuario') #Cargo las cuentas ya creadas
