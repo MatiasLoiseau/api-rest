@@ -30,7 +30,7 @@ class UsuarioTestCase(APITestCase):
     def test_get_usuarios_por_cuenta(self):
         call_command('loaddata', 'data_acc.json', app_label='usuario') #Cargo las cuentas ya creadas
         call_command('loaddata', 'data_usr.json', app_label='usuario') #Cargo un usuario ya creado
-        response = self.client.get('/controlgastos/cuentas/1/usuarios')
+        response = self.client.get('/controlgastos/cuentas/1/usuarios/')
         self.assertEqual(200, response.status_code)      
         
  
