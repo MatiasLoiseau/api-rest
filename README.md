@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/MatiasLoiseau/api-rest.svg?branch=master)](https://travis-ci.org/MatiasLoiseau/api-rest)
 [![Coverage Status](https://coveralls.io/repos/github/MatiasLoiseau/api-rest/badge.svg)](https://coveralls.io/github/MatiasLoiseau/api-rest)
+
 # Tabla de Contenidos
 
 1. [Introducción](#introducción)
