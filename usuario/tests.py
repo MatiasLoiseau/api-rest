@@ -16,6 +16,14 @@ class UsuarioTestCase(APITestCase):
         call_command('loaddata', 'data_usr.json', app_label='usuario') #Cargo un usuario ya creado
         response = self.client.get('/controlgastos/usuarios/')
         self.assertEqual(200, response.status_code)
+        
+   #Testeo la consulta de un usuario especifico
+   def test_get_usuario_bypk(self):
+        call_command('loaddata', 'data_acc.json', app_label='usuario') #Cargo las cuentas ya creadas
+        call_command('loaddata', 'data_usr.json', app_label='usuario') #Cargo un usuario ya creado
+        response = self.client.get('/controlgastos/usuarios/1/')
+        self.assertEqual(200, response.status_code)
+        self.assertEqual(json.loads(response.content),[{'id': 1,"user": "pepe", "password": "1", "email": "pepe@hotmail.com", "cuenta": 1}])
           
     #Testeo borrado de un usuario
     def test_delete_usuario(self):
