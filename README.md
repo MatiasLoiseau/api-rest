@@ -550,3 +550,4 @@ En caso de que se quiera correr algun cambio se podrá generar la migración.
 Para testear solo un recurso en particular:
 
 		python3 manage.py test <nombre recurso>.tests
+
