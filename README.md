@@ -1,7 +1,7 @@
 # Control Gastos / Api-Rest con Django
 
 [![Build Status](https://travis-ci.org/MatiasLoiseau/api-rest.svg?branch=master)](https://travis-ci.org/MatiasLoiseau/api-rest)
-[![Coverage Status](https://coveralls.io/repos/github/MatiasLoiseau/api-rest/badge.svg?branch=master)](https://coveralls.io/github/MatiasLoiseau/api-rest?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/MatiasLoiseau/api-rest/badge.svg?branch=master&service=github)](https://coveralls.io/github/MatiasLoiseau/api-rest?branch=master)
 
 # Tabla de Contenidos
 
