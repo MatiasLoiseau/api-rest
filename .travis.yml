@@ -14,7 +14,7 @@ before_install:
 install:
   - pip3 install -q django==$DJANGO
   - pip3 install -q djangorestframework
-  - pip3 install coveralls
+  - pip install coveralls
 
 script:
   - python3 manage.py test 
