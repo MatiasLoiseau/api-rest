@@ -42,7 +42,7 @@ class CategoriaTestCase(APITestCase):
     def test_bad_request_put_categoria(self):
         call_command('loaddata', 'data_acc.json', app_label='categoria') #Cargo las cuentas ya creadas
         categoria_data_modificada = {u'nombre': u'testnombremodificado', u'cuenta': u'10'}
-        response_put = self.client.put('/controlgastos/usuarios/1/', usuario_data_modificada, format='json')
+        response_put = self.client.put('/controlgastos/categorias/1/', categoria_data_modificada, format='json')
         self.assertEqual(400, response_put.status_code) 
         
         
