@@ -14,11 +14,11 @@ class CategoriaTestCase(APITestCase):
         self.assertEqual(201, response.status_code)
         
    #Testeo la carga de una categoria asociada a una cuenta inexistente
-   def test_bad_request_incorrect_type_categoria(self):
-        categoria_data_wrong = {u'nombre': u'testnombre', u'cuenta': u'100'}
+    def test_bad_request_incorrect_type_categoria(self):
+        call_command('loaddata', 'data_acc.json', app_label='categoria')
+        categoria_data_wrong = {u'nombre': u'testnombre', u'cuenta': u'SoyUnError'}
         response_post_wrong = self.client.post('/controlgastos/categorias/', categoria_data_wrong, format='json')
-        self.assertEqual(400, response_post_wrong.status_code)
-        
+        self.assertEqual(400, response_post_wrong.status_code)      
     #Testeo la carga de una categoria con parametros incorrectos
     def test_bad_request_field_required_categoria(self):
         call_command('loaddata', 'data_acc.json', app_label='categoria')
