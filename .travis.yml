@@ -17,8 +17,8 @@ install:
   - pip3 install drfdocs
 
 script:
-  - python3 manage.py test
-  - coverage run --source=python3 manage.py test
+  - python3 manage.py test usuarios
+  - coverage run --source=python3 manage.py test usuarios
   
 after_success:
   - coveralls
