@@ -18,7 +18,7 @@ install:
 
 script:
   - python3 manage.py test 
-  - coverage run --source=tp,usuario,cuenta,categoria,movimiento manage.py test
+  - coverage run --source=usuario,cuenta,categoria,movimiento manage.py test
   
 after_success:
   - coveralls
