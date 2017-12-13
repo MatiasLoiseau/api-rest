@@ -8,6 +8,9 @@ python:
 
 env:
   - DJANGO=1.11.7
+  
+before_install:
+  - export PYTHONPATH=$HOME/builds/marianovecco/Trabajo-Final/
 
 install:
   - pip3 install -q django==$DJANGO
