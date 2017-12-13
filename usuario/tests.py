@@ -46,7 +46,7 @@ class UsuarioTestCase(APITestCase):
         self.assertEqual(200, response.status_code)
         
     #Testeo consulta de usuario inexistente
-     def test_not_found_get_usuario(self):
+    def test_not_found_get_usuario(self):
         response = self.client.get('/controlgastos/usuarios/3/')
         self.assertEqual(404, response.status_code)
         
