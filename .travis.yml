@@ -1,6 +1,4 @@
-language: python
-
-python:
+ 
   - "3.5"
 
 #services:
@@ -10,8 +8,7 @@ env:
   - DJANGO=1.11.7
   
 before_install:
-  - export PYTHONPATH=$HOME/builds/marianovecco/Trabajo-Final/
-
+  - export PYTHONPATH=$HOME/builds/MatiasLoiseau/api-rest/
 install:
   - pip3 install -q django==$DJANGO
   - pip3 install -q djangorestframework
