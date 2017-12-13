@@ -31,23 +31,23 @@ class CategoriaTestCase(APITestCase):
     '''Consulta de categorias'''
     
     #Testeo la consulta de las categorias
-    def test_get_usuario(self):
-        call_command('loaddata', 'data_acc.json') #Cargo las cuentas ya creadas
-        call_command('loaddata', 'data_cate.json') #Cargo un usuario ya creado
+    def test_get_categoria(self):
+        call_command('loaddata', 'data_acc.json', app_label='categoria') #Cargo las cuentas ya creadas
+        call_command('loaddata', 'data_cate.json', app_label='categoria') #Cargo un usuario ya creado
         response = self.client.get('/controlgastos/categorias/')
         self.assertEqual(200, response.status_code)
         
     #Testeo la consulta de una categoria especifica
-    def test_get_usuario_bypk(self):
-        call_command('loaddata', 'data_acc.json') #Cargo las cuentas ya creadas
-        call_command('loaddata', 'data_cate.json') #Cargo un usuario ya creado
+    def test_get_categoria_bypk(self):
+        call_command('loaddata', 'data_acc.json', app_label='categoria') #Cargo las cuentas ya creadas
+        call_command('loaddata', 'data_cate.json', app_label='categoria') #Cargo un usuario ya creado
         response = self.client.get('/controlgastos/categorias/1/')
         self.assertEqual(200, response.status_code)
        
    #Test consulta de catergorias asociadas a una cuenta x
-    def test_get_usuarios_por_cuenta(self):
-        call_command('loaddata', 'data_acc.json') #Cargo las cuentas ya creadas
-        call_command('loaddata', 'data_cate.json') #Cargo un usuario ya creado
+    def test_get_categorias_por_cuenta(self):
+        call_command('loaddata', 'data_acc.json', app_label='categoria') #Cargo las cuentas ya creadas
+        call_command('loaddata', 'data_cate.json', app_label='categoria') #Cargo un usuario ya creado
         response = self.client.get('/controlgastos/cuentas/1/categorias/')
         self.assertEqual(200, response.status_code)    
         
