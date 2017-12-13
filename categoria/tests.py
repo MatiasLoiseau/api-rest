@@ -39,10 +39,9 @@ class CategoriaTestCase(APITestCase):
         self.assertEqual(200, responsePut.status_code)
         
    #Testeo modificación de categoria con envio incorrecto de parametros
-    def test_bad_request_put_usuario(self):
+    def test_bad_request_put_categoria(self):
         call_command('loaddata', 'data_acc.json', app_label='categoria') #Cargo las cuentas ya creadas
-        call_command('loaddata', 'data_usr.json', app_label='categoria') #Cargo un usuario ya creado
-        usuario_data_modificada = {u'password': u'testpassword2', u'user2': u'testuser', u'cuenta': u'ERROR',u'email': u'test@email.com'}
+        categoria_data_modificada = {u'nombre': u'testnombremodificado', u'cuenta': u'10'}
         response_put = self.client.put('/controlgastos/usuarios/1/', usuario_data_modificada, format='json')
         self.assertEqual(400, response_put.status_code) 
         
