@@ -1,5 +1,7 @@
 from rest_framework.test import APITestCase
 from django.core.management import call_command
+import json
+
 #TEST DEL RECURSO USUARIO
 class UsuarioTestCase(APITestCase):
     
