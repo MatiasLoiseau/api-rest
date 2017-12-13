@@ -66,7 +66,7 @@ class UsuarioTestCase(APITestCase):
         self.assertEqual(200, response_delete.status_code)
         
     #Testeo intento de borrado de un usuario inexistente
-    def test_delete_usuario(self):
+    def test_not_found_delete_usuario_erroneo(self):
         response_delete = self.client.delete('/controlgastos/usuarios/6/', format='json')
         self.assertEqual(404, response_delete.status_code)
         
@@ -80,7 +80,7 @@ class UsuarioTestCase(APITestCase):
         self.assertEqual(200, response_put.status_code)
      
     #Testeo modificación de un usuario con envio incorrecto de parametros
-    def test_put_usuario(self):
+    def test_bad_request_put_usuario(self):
         call_command('loaddata', 'data_acc.json', app_label='usuario') #Cargo las cuentas ya creadas
         call_command('loaddata', 'data_usr.json', app_label='usuario') #Cargo un usuario ya creado
         usuario_data_modificada = {u'password': u'testpassword2', u'user2': u'testuser', u'cuenta': u'ERROR',u'email': u'test@email.com'}
