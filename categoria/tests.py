@@ -47,7 +47,7 @@ class CategoriaTestCase(APITestCase):
         self.assertEqual(400, response_put.status_code) 
         
         
-   '''Eliminacion de Categoria'''
+    '''Eliminacion de Categoria'''
 
     #Testeo de eliminacion de categoria
     def test_delete_categoria(self):
