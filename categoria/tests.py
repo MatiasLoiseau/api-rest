@@ -26,6 +26,32 @@ class CategoriaTestCase(APITestCase):
         categoria_data_wrong = {u'cuenta': u'ERROR'}
         response_post_wrong = self.client.post('/controlgastos/categorias/', categoria_data_wrong, format='json')
         self.assertEqual(400, response_post_wrong.status_code)
+        
+        
+    '''Consulta de categorias'''
+    
+    #Testeo la consulta de las categorias
+    def test_get_usuario(self):
+        call_command('loaddata', 'data_acc.json') #Cargo las cuentas ya creadas
+        call_command('loaddata', 'data_cate.json') #Cargo un usuario ya creado
+        response = self.client.get('/controlgastos/categorias/')
+        self.assertEqual(200, response.status_code)
+        
+    #Testeo la consulta de una categoria especifica
+    def test_get_usuario_bypk(self):
+        call_command('loaddata', 'data_acc.json') #Cargo las cuentas ya creadas
+        call_command('loaddata', 'data_cate.json') #Cargo un usuario ya creado
+        response = self.client.get('/controlgastos/categorias/1/')
+        self.assertEqual(200, response.status_code)
+       
+   #Test consulta de catergorias asociadas a una cuenta x
+    def test_get_usuarios_por_cuenta(self):
+        call_command('loaddata', 'data_acc.json') #Cargo las cuentas ya creadas
+        call_command('loaddata', 'data_cate.json') #Cargo un usuario ya creado
+        response = self.client.get('/controlgastos/cuentas/1/categorias/')
+        self.assertEqual(200, response.status_code)    
+        
+        
 
    
     '''Modificacion de Categoria''' 
